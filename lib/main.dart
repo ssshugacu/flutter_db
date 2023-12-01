@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
 
       ],
       child: MaterialApp(
-        title: 'Ваше приложение',
         theme: ThemeData(
           primaryColor: Colors.white,
         ),
