@@ -17,9 +17,6 @@ class MyApp extends StatelessWidget {
 
       ],
       child: MaterialApp(
-        theme: ThemeData(
-          primaryColor: Colors.white,
-        ),
         initialRoute: '/todo',
         routes: {
           '/todo': (context) => Home(),
