@@ -3,15 +3,79 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider with ChangeNotifier {
 
+  String getTodoListTitle() {
+    
+    if (selectedLanguage == 'Русский') {
+      return 'Список дел';
+    } else if (selectedLanguage == 'English') {
+      return 'Todo List';
+    }
+    return 'Список дел'; 
+  }
+
+   String getEditingTodoListDialog() {
+    
+    if (selectedLanguage == 'Русский') {
+      return 'Редактирование заметки';
+    } else if (selectedLanguage == 'English') {
+      return 'Note editing';
+    }
+    return 'Редактирование заметки'; 
+  }
+
+  String getEditingTodoListButton() {
+    
+    if (selectedLanguage == 'Русский') {
+      return 'Сохранить';
+    } else if (selectedLanguage == 'English') {
+      return 'Save';
+    }
+    return 'Сохранить'; 
+  }
+
+  String getAdditionTodoListDialog() {
+    
+    if (selectedLanguage == 'Русский') {
+      return 'Добавление заметки';
+    } else if (selectedLanguage == 'English') {
+      return 'Note addition';
+    }
+    return 'Добавление заметки'; 
+  }
+
+  String getAdditionTodoListButton() {
+    
+    if (selectedLanguage == 'Русский') {
+      return 'Добавить';
+    } else if (selectedLanguage == 'English') {
+      return 'Add';
+    }
+    return 'Добавить'; 
+  }
+
+  String getSettingsThemeTitle() {
+    
+    if (selectedLanguage == 'Русский') {
+      return 'Настройки';
+    } else if (selectedLanguage == 'English') {
+      return 'Settings';
+    }
+    return 'Настройки'; 
+  }
+
+
+
 final Color _dropdownBackgroundColorLight = Colors.white;
 final Color _dropdownTextColorLight = Colors.lightBlueAccent;
 final Color _dropdownBackgroundColorLightEnabled = Colors.white;
 final Color _dropdownTextColorLightEnabled = Colors.lightBlueAccent;
+final Color _dropdownTextColorMenuLight = Colors.white;
 
-final Color _dropdownBackgroundColorDark = Colors.orangeAccent;
-final Color _dropdownTextColorDark = Colors.black;
+final Color _dropdownBackgroundColorDark = Colors.black;
+final Color _dropdownTextColorDark = Colors.deepPurple.shade200;
 final Color _dropdownBackgroundColorDarkEnabled = Colors.black;
-final Color _dropdownTextColorDarkEnabled = Colors.orangeAccent;
+final Color _dropdownTextColorDarkEnabled = Colors.deepPurple.shade200;
+final Color _dropdownTextColorMenuDark = Colors.black;
 
   Color get dropdownBackgroundColor =>
       _isDarkThemeEnabled ? _dropdownBackgroundColorDark : _dropdownBackgroundColorLight;
@@ -24,6 +88,9 @@ final Color _dropdownTextColorDarkEnabled = Colors.orangeAccent;
 
   Color get dropdownTextColorEnabled =>
       _isDarkThemeEnabled ? _dropdownTextColorDarkEnabled : _dropdownTextColorLightEnabled;
+
+  Color get dropdownTextColorMenu =>
+      _isDarkThemeEnabled ? _dropdownTextColorMenuDark : _dropdownTextColorMenuLight;
 
   bool _isDarkThemeEnabled = false;
   String _selectedLanguage = 'Русский';
@@ -79,38 +146,38 @@ static final ThemeData _lightTheme = ThemeData(
 static final ThemeData _darkTheme = ThemeData.dark().copyWith(
   primaryColor: Colors.black,
   scaffoldBackgroundColor: Colors.black,
-  appBarTheme: const AppBarTheme(
+  appBarTheme:  AppBarTheme(
     color: Colors.black,
-    iconTheme: const IconThemeData(
-      color: Colors.orange,
+    iconTheme: IconThemeData(
+      color: Colors.deepPurple.shade200,
     ),
-    actionsIconTheme: const IconThemeData(
-      color: Colors.orange,
+    actionsIconTheme: IconThemeData(
+      color: Colors.deepPurple.shade200,
     ),
   ),
-  textTheme: const TextTheme(
+  textTheme:  TextTheme(
     bodyText1: TextStyle(color: Colors.black),
-    bodyText2: TextStyle(color: Colors.orangeAccent),
+    bodyText2: TextStyle(color: Colors.deepPurple.shade200),
   ),
-  floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: Colors.orangeAccent,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: Colors.deepPurple.shade200,
     foregroundColor: Colors.black,
   ),
   iconTheme: const IconThemeData(
     color: Colors.black,
   ),
-  cardColor: Colors.orangeAccent,
+  cardColor: Colors.deepPurple.shade200,
   switchTheme: SwitchThemeData(
-    trackColor: MaterialStateProperty.all<Color>(Colors.orangeAccent.withOpacity(0.5)),
+    trackColor: MaterialStateProperty.all<Color>(Colors.deepPurple.shade200.withOpacity(0.5)),
     thumbColor: MaterialStateProperty.resolveWith<Color>(
       (Set<MaterialState> states) {
         if (states.contains(MaterialState.disabled)) {
-          return Colors.orangeAccent.withOpacity(0.5);
+          return Colors.deepPurple.shade200.withOpacity(0.5);
         }
-        return Colors.orangeAccent;
+        return Colors.deepPurple.shade200;
       },
     ),
-    overlayColor: MaterialStateProperty.all<Color>(Colors.orangeAccent.withOpacity(0.2)),
+    overlayColor: MaterialStateProperty.all<Color>(Colors.deepPurple.shade200.withOpacity(0.2)),
   ),
 );
 
@@ -147,6 +214,9 @@ static final ThemeData _darkTheme = ThemeData.dark().copyWith(
   ThemeProvider() {
     _loadSettings();
   }
+
+  
 }
+
 
 

@@ -10,6 +10,9 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+
+  ThemeProvider themeProvider = ThemeProvider();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +21,8 @@ class _SettingsState extends State<Settings> {
         backgroundColor: Provider.of<ThemeProvider>(context).currentTheme.appBarTheme.backgroundColor,
         bottomOpacity: 0.0,
         elevation: 0.0,
-        title: Text('Настройки',style: TextStyle(color: Provider.of<ThemeProvider>(context).currentTheme.textTheme.bodyText2?.color),
-),
+        title: Text(ThemeProvider.getSettingsThemeTitle(),
+        style: TextStyle(color: Provider.of<ThemeProvider>(context).currentTheme.textTheme.bodyText2?.color)),
 
         centerTitle: true,
         leading: IconButton(
@@ -56,7 +59,7 @@ class _SettingsState extends State<Settings> {
       child: Text(
         language,
         style: TextStyle(
-          color: themeProvider.dropdownTextColorEnabled,
+          color: themeProvider.dropdownTextColor,
         ),
       ),
     );
@@ -65,18 +68,15 @@ class _SettingsState extends State<Settings> {
     themeProvider.setSelectedLanguage(value ?? '');
   },
   dropdownColor: themeProvider.dropdownBackgroundColor,
-  style: themeProvider.currentTheme.textTheme.bodyText2?.copyWith(
-    color: themeProvider.dropdownTextColor,  // Цвет текста при активном состоянии
+  style: themeProvider.currentTheme.textTheme.bodyText1?.copyWith(
+    color: themeProvider.dropdownTextColorMenu,
   ),
   icon: Icon(
     Icons.arrow_drop_down,
-    color: themeProvider.dropdownTextColorEnabled,  // Цвет стрелочки при активном состоянии
+    color: themeProvider.dropdownTextColorEnabled,
   ),
-  iconEnabledColor: themeProvider.dropdownTextColor,  // Цвет стрелочки при неактивном состоянии
-),
-
-
-
+  iconEnabledColor: themeProvider.dropdownTextColorEnabled,
+)
               ),
             ],
           );
