@@ -63,6 +63,28 @@ class ThemeProvider with ChangeNotifier {
     return 'Настройки'; 
   }
 
+  String getSettingsTheme() {
+    
+    if (selectedLanguage == 'Русский') {
+      return 'Тёмная тема';
+    } else if (selectedLanguage == 'English') {
+      return 'Dark mode';
+    }
+    return 'Тёмная тема'; 
+  }
+
+  String getSettingsLanguage() {
+    
+    if (selectedLanguage == 'Русский') {
+      return 'Язык';
+    } else if (selectedLanguage == 'English') {
+      return 'Language';
+    }
+    return 'Язык'; 
+  }
+
+  
+
 
 
 final Color _dropdownBackgroundColorLight = Colors.white;
